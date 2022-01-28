@@ -38,7 +38,7 @@ let stringCompression = (s) => {
 
 console.log(
     stringCompression('aabcccccaaa') === 'a2b1c5a3',
-    stringCompression('aa') === 'aa',
+    stringCompression('aa') === 'a1',          // this will return false
     stringCompression('aaAAaa') === 'aaAAaa',
     stringCompression('aaaAAaa') === 'a3A2a2',
     stringCompression('') === ''

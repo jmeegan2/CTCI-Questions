@@ -6,6 +6,8 @@ I: string
 O: boolean (true or false)
 C: Optimize
 E: No string
+
+// time and space complexity O(N) just looping through array once linear
 */
 
 let isUnique = (string) => {

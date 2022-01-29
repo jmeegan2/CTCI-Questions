@@ -7,6 +7,8 @@ I: two strings
 O: boolean true or false
 C: optimize 
 E: no string, different lengths === false automatically
+
+// time complexity is O(2N) or O(N) linear
 */
 
 

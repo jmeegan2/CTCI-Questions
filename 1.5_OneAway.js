@@ -47,21 +47,21 @@ let oneAway = (s1, s2) => {
    let maxLen = Math.max(s1.length, s2.length);
    let diff = Math.abs(s1.length - s2.length);  // look up syntax for abs
 
-   if (diff > edits) {
+   if (diff > edits) {        //if the string is more than one character different in length false it is not one edit away
        return false;
    }
 
     for (let i = 0, j = 0; i < maxLen || j < maxLen; i++, j++) {
         let c1 = s1[i] //character string 1 at index i
-        let c2 = s2[j] //character string 2 at index i 
+        let c2 = s2[j] //character string 2 at index j 
         if (c1 !== c2) {
             edits--;
             if (edits < 0) {
                 return false;
             }
-            if (c1 === s2[j + 1]) {  //inserted
+            if (c1 === s2[j + 1]) {  //in this case s2 has one more
                 j++;
-            } else if (s1[i + 1] === c2) {   //removed
+            } else if (s1[i + 1] === c2) {   //in this case s1 has one more 
               i++;
             }
         }
@@ -75,4 +75,5 @@ console.log(
     oneAway('pale' , 'ple') === true, //removed
     oneAway('pales', 'pale') === true, //inserted
     oneAway('pale', 'bale') === true, //replaced
+    oneAway('cak', 'cake') === true //inserted
 )

@@ -19,34 +19,34 @@ space complexity: linear O(N)
 */
 
 let palPerm = (s) => {    //s is string
-   //if even: there must be two of every char
-   //if odd: there must be only one unique char
+    //if even: there must be two of every char
+    //if odd: there must be only one unique char
 
-   //use hash table to store letters
-   //if we see the same letter again, delete from hash
-   //check hash at the end: odd - 1 key left, even - no keys left
-   //skip spaces
+    //use hash table to store letters
+    //if we see the same letter again, delete from hash
+    //check hash at the end: odd - 1 key left, even - no keys left
+    //skip spaces
 
-   let hash = {};
-   let charCount = 0;
+    let hash = {};
+    let charCount = 0;
 
-   for (let i = 0; i < s.length; i++) {
-       let c = s[i];
-       if ( c === " ") {
-           continue;          //skips that iteration
-       }
-       if (hash[c]) {      // if the character already exists in the hash then delete it 
-           delete hash[c];
-       } else {           // store in the hash and store as true
-           hash[c] = true;
-       }
-       charCount++;          
-   }
-   if (charCount % 2 === 0) {
-       return Object.keys(hash).length === 0;            // if our character count is even then there should be no keys and that means its a palindrome
-   } else { 
-       return Object.keys(hash).length === 1;            // if the charactacter count is odd then there will be one key left over, still a palindrome just an odd one
-   }
+    for (let i = 0; i < s.length; i++) {
+        let c = s[i];
+        if (c === " ") {
+            continue;          //skips that iteration
+        }
+        if (hash[c]) {      // if the character already exists in the hash then delete it 
+            delete hash[c];
+        } else {           // store in the hash and store as true
+            hash[c] = true;
+        }
+        charCount++;
+    }
+    if (charCount % 2 === 0) {
+        return Object.keys(hash).length === 0;            // if our character count is even then there should be no keys and that means its a palindrome
+    } else {
+        return Object.keys(hash).length === 1;            // if the charactacter count is odd then there will be one key left over, still a palindrome just an odd one
+    }
 }
 
 console.log(

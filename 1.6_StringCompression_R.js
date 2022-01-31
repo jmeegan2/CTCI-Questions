@@ -6,35 +6,28 @@ For example, the string aabcccccaaa would become a2b1c5a3.
 If the "compressed" string would not become smaller than the original string, 
 your method should return the original string. You can assume the string 
 has only uppercase and lowercase letters (a - z). 
-I: string
-O: compressed string
-C: optimize
-E: empty string, compressed string that's same length as the original string
 
-//time complexity: linear 
-//space complexity: constant
+I; string
+O: string
+C: optimize
+E: empty string or same length as original than make the output the same as the input
 */
 
 let stringCompression = (s) => {
-    //traverse string, keep count of repeated chars
-    //if cur and next char is the same, inc count
-    //otherwise, concat cur char and count to output sting, reset count to 1
-    //return compressed string, only if the length is less than the original string, otherwise, return original string
-    let out = ''
+    let out = '';  //new string that will be added to
     let count = 1;
 
+    // for loop to go through the characters
     for (let i = 0; i < s.length; i++) {
         let cur = s[i];
         let next = s[i + 1];
         if (cur === next) {
-            count++;
+            count++
         } else {
             out += cur + String(count);
-            count = 1; //sets it back to one afterwards
+            count = 1;
         }
-
     }
-
     return out.length < s.length ? out : s;
 }
 

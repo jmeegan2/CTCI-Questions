@@ -20,7 +20,7 @@ time complexity: linear O(N)
 space complexity: O(1) constant
 */
 
-let oneAway = (s1,s2) => {
+let oneAway = (s1, s2) => {
     let edits = 1;
     let maxLength = Math.max(s1.length, s2.length)
     let diff = Math.abs(s1.length - s2.length)
@@ -29,7 +29,7 @@ let oneAway = (s1,s2) => {
         return false;
     }
 
-    for(let i = 0, j = 0; i < maxLength || j < maxLength; i++, j++) {
+    for (let i = 0, j = 0; i < maxLength || j < maxLength; i++, j++) {
         let c1 = s1[i];
         let c2 = s2[j];
         if (c1 !== c2) {
@@ -37,7 +37,22 @@ let oneAway = (s1,s2) => {
             if (edits < 0) {
                 return false;
             }
-            if (c1 === s2[j + 1])
+            if (c1 === s2[j + 1]) {
+                j++;
+            } else if (c2 === s1[i + 1]) {
+
+                i++
+            }
         }
     }
-}
+    return true;
+};
+
+
+//test cases
+console.log(
+    oneAway('pale', 'ple') === true, //removed
+    oneAway('pales', 'pale') === true, //inserted
+    oneAway('pale', 'bale') === true, //replaced
+    oneAway('cak', 'cake') === true //inserted
+)

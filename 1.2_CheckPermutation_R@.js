@@ -22,6 +22,6 @@ let checkPermu = (s1, s2) => {
 
 }
 
-console.log(checkPermu('ava', 'vaa'), true);
+console.log(checkPermu('ava', 'vaa'));
 
-console.log(checkPermu('aba', 'aaba'), false)
+console.log(checkPermu('aba', 'aaba'));

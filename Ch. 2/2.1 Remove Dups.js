@@ -17,18 +17,61 @@ on the preceding element. The final result of running the reducer across all ele
  set method allow use to indicate a key and value for that map
 */
 
-"use strict";
+// "use strict";
 
-const users = [
-    { id: 32, fName: 'Mary', lName: 'Smith' },
-    { id: 65, fName: 'Steve', lName: 'Hancock' },
-    { id: 105, fName: 'LJ', lName: 'Estoque' },
-    { id: 65, fName: 'Steve', lName: 'Hancock' },
-    { id: 12, fName: 'Lynette', lName: 'Turner' },
-    { id: 32, fName: 'Mary', lName: 'Smith' },
-];
-// KEY Value is the entire object id, fName, lName
+// const users = [
+//     { id: 32, fName: 'Mary', lName: 'Smith' },
+//     { id: 65, fName: 'Steve', lName: 'Hancock' },
+//     { id: 105, fName: 'LJ', lName: 'Estoque' },
+//     { id: 65, fName: 'Steve', lName: 'Hancock' },
+//     { id: 12, fName: 'Lynette', lName: 'Turner' },
+//     { id: 32, fName: 'Mary', lName: 'Smith' },
+// ];
+// // KEY Value is the entire object id, fName, lName
 
-const uniqUsers = users.reduce((map, obj) => map.set(obj.id, obj), new Map());
+// const uniqUsers = users.reduce((map, obj) => map.set(obj.id, obj), new Map());
 
-// https://www.youtube.com/watch?v=5JFJTGZ4gHQ 6:45
+// // https://www.youtube.com/watch?v=5JFJTGZ4gHQ 6:45
+
+class LinkedListNode {        // class is creating a template for future objects
+    constructor(value) {      // constructor is initializing an object instance of this class
+        this.value = value;   // "this" is a property of an execution context (global, function or eval) 
+        this.next = null;     // that in non-strict mode, is always a reference to an objectand in strict mode can be any value
+    }
+}
+
+let head = new LinkedListNode("head");
+
+let x = [1, 1, 1, 1, 4, 10, 10, 3, 10, 9, 5, 5, 5, 8];
+
+for ( let ele of x) {               //looping through all the elements 
+    let y = new LinkedListNode(ele);  
+    let pointer = head;
+    while(pointer.next != null) {
+        pointer = pointer.next;
+    }
+    pointer.next = y;
+}
+
+function removeDup(currentNode = sll){
+    const seen = {};
+    while(currentNode) {
+        if(seen[currentNode.value]) {
+            lastUnique.next = currentNode.next
+        } else {
+            seen[currentNode.value] = true;
+            lastUnique = currentNode
+        } 
+        currentNode = currentNode.next;
+    }
+}
+
+removeDup(head);
+
+let outputNode = head;
+while (outputNode) {
+    outputNode = outputNode.next;
+    if(outputNode) {
+        console.log(outputNode.value)
+    }
+}
